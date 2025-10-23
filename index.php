@@ -1,9 +1,22 @@
+<?php
+require_once("lib/plaintext.php");
+require_once("lib/csv.php");
+require_once("lib/json.php");
+
+$company_name = readPlaintextFile("data/company_name.txt");
+$overview = readPlaintextFile("data/overview.txt");
+$mission_statement = readPlaintextFile("data/mission_statement.txt");
+$products = readJsonFile("data/products.json");
+$awards = readCSVFile("data/awards.csv");
+$team = readCSVFile("data/team.csv");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>Qexal - Responsive Bootstrap 5 Landing Page Template</title>
+    <title><?= $company_name ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
     <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
@@ -79,7 +92,7 @@
                     <div class="text-center">
                         <span class="badge badge-soft-primary mb-4">Professional Landing</span>
                         <h1 class="font-weight-semibold mb-4 hero-3-title">Professional, Multipurpose Landing Page</h1>
-                        <p class="mb-5 text-muted subtitle w-75 mx-auto">Nemo enim ipsam voluptatem quia voluptas sit aut aspernatur aut fugit sed consequuntur magni dolores nesciunt.</p>
+                        <p class="mb-5 text-muted subtitle w-75 mx-auto"><?= $mission_statement ?></p>
 
                         <div>
                             <button type="button" class="btn btn-primary rounded-pill me-2">Sign up for free</button>
@@ -111,50 +124,47 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-7 text-center">
-                    <h2 class="fw-bold">Our Services</h2>
-                    <p class="text-muted">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem ab illo inventore.</p>
+                    <h2 class="fw-bold">Awards</h2>
+                    <!-- <p class="text-muted">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem ab illo inventore.</p> -->
                 </div>
             </div>
             <!-- end row -->
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="service-box text-center px-4 py-5 position-relative mb-4">
-                        <div class="service-box-content p-4">
-                            <div class="icon-mono service-icon avatar-md mx-auto mb-4">
-                                <i class="" data-feather="box"></i>
+                <?php
+                $i = 0;
+                foreach ($awards as $award) {
+                    $i++;
+                    if ($i % 2 == 1) {
+                ?>
+                        <div class="col-lg-4">
+                            <div class="service-box text-center px-4 py-5 position-relative mb-4">
+                                <div class="service-box-content p-4">
+                                    <div class="icon-mono service-icon avatar-md mx-auto mb-4">
+                                        <i class="" data-feather="box"></i>
+                                    </div>
+                                    <h4 class="mb-3 font-size-22"><?= $award[0] ?></h4>
+                                    <p class="text-muted mb-0"><?= $award[1] ?></p>
+                                </div>
                             </div>
-                            <h4 class="mb-3 font-size-22">Digital Design</h4>
-                            <p class="text-muted mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
                         </div>
-                    </div>
-                </div>
-                <!-- end col -->
+                        <!-- end col -->
 
-                <div class="col-lg-4">
-                    <div class="service-box text-center px-4 py-5 position-relative mb-4 active">
-                        <div class="service-box-content p-4">
-                            <div class="icon-mono service-icon avatar-md mx-auto mb-4">
-                                <i class="" data-feather="layers"></i>
-                            </div>
-                            <h4 class="mb-3 font-size-22">Awesome Support</h4>
-                            <p class="text-muted mb-0">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end col -->
+                    <?php } else { ?>
 
-                <div class="col-lg-4">
-                    <div class="service-box text-center px-4 py-5 position-relative mb-4">
-                        <div class="service-box-content p-4">
-                            <div class="icon-mono service-icon avatar-md mx-auto mb-4">
-                                <i class="" data-feather="server"></i>
+                        <div class="col-lg-4">
+                            <div class="service-box text-center px-4 py-5 position-relative mb-4 active">
+                                <div class="service-box-content p-4">
+                                    <div class="icon-mono service-icon avatar-md mx-auto mb-4">
+                                        <i class="" data-feather="layers"></i>
+                                    </div>
+                                    <h4 class="mb-3 font-size-22"><?= $award[0] ?></h4>
+                                    <p class="text-muted mb-0"><?= $award[1] ?></p>
+                                </div>
                             </div>
-                            <h4 class="mb-3 font-size-22">Easy to customize</h4>
-                            <p class="text-muted mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque.</p>
                         </div>
-                    </div>
-                </div>
-                <!-- end col -->
+                        <!-- end col -->
+                <?php }
+                } ?>
             </div>
             <!-- end row -->
         </div>
