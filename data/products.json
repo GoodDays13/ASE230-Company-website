@@ -2,37 +2,37 @@
   {
     "name": "Celestial VR™",
     "description": "A virtual reality platform offering hyper-realistic experiences, from serene walks on Mars to diving into the Marianas Trench, all from the comfort of your living room.",
-    "applications": [
-      "Educational Suites: Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
-      "Adventure Modules: Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
-      "Therapeutic Landscapes: Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
-    ]
+    "applications": {
+      "Educational Suites": "Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
+      "Adventure Modules": "Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
+      "Therapeutic Landscapes": "Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
+    }
   },
   {
     "name": "Luminara Glasses™",
     "description": "Lightweight AR glasses that overlay digital information on the real world. Users can seamlessly interact with virtual objects, get real-time data overlays, or even project a movie onto any wall.",
-    "applications": [
-      "Educational Suites: Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
-      "Adventure Modules: Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
-      "Therapeutic Landscapes: Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
-    ]
+    "applications": {
+      "Educational Suites": "Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
+      "Adventure Modules": "Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
+      "Therapeutic Landscapes": "Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
+    }
   },
   {
     "name": "QuantNet™",
     "description": "The world’s first accessible quantum computer service for businesses. It promises computations at speeds previously deemed impossible, ideal for industries like finance, healthcare, and space exploration.",
-    "applications": [
-      "Educational Suites: Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
-      "Adventure Modules: Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
-      "Therapeutic Landscapes: Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
-    ]
+    "applications": {
+      "Educational Suites": "Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
+      "Adventure Modules": "Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
+      "Therapeutic Landscapes": "Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
+    }
   },
   {
     "name": "Nebula Academy™",
     "description": "A global online institution teaching the next generation about AR, VR, and quantum computing. It offers courses from beginner to advanced levels and provides certification recognized worldwide.",
-    "applications": [
-      "Educational Suites: Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
-      "Adventure Modules: Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
-      "Therapeutic Landscapes: Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
-    ]
+    "applications": {
+      "Educational Suites": "Users can explore ancient civilizations, understand complex scientific phenomena, or walk among dinosaurs, making learning truly immersive.",
+      "Adventure Modules": "Dive with sharks, climb Everest, or navigate the Amazon rainforest; Celestial VR™ promises adrenaline-filled experiences without risks.",
+      "Therapeutic Landscapes": "Tailored experiences like serene beaches, tranquil forests, or mesmerizing galaxies help users relax and de-stress."
+    }
   }
 ]
