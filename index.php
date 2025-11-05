@@ -136,15 +136,15 @@ $team = new TeamRepository();
             ?>
                 <div class="row align-items-center justify-content-between <?= $i == 0 ? "mb-5" : "section pb-0" ?>">
                     <div class="col-md-6 order-1 order-md-<?= $i % 2 == 0 ? '2' : '1' ?> 1 mt-md-0 mt-5">
-                        <h2 class="mb-4"><?= $product->name ?></h2>
-                        <p class="text-muted mb-5"><?= $product->description ?></p>
+                        <h2 class="mb-4"><?= $product['name'] ?></h2>
+                        <p class="text-muted mb-5"><?= $product['description'] ?></p>
                         <a href="javascript: void(0);" class="btn btn-primary">Find out more <i class="icon-xs ms-2" data-feather="arrow-right"></i></a>
                     </div>
                     <!-- end col -->
                     <div class="col-md-5 order-2 order-md-<?= $i % 2 == 0 ? '1' : '2' ?>">
                         <ul class="list-group">
                             <?php
-                            foreach ($product->applications as $app => $desc) {
+                            foreach ($product['applications'] as $app => $desc) {
                                 echo "<li class='list-group-item'>" . $app . ": " . $desc . "</li>";
                             } ?>
                         </ul>
