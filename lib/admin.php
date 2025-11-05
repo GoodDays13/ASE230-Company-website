@@ -34,7 +34,7 @@ class AdminPage
 			<div class="container">
 				<h1><?= $this->title ?></h1>
 			</div>
-			<div class="container mb-3 d-flex justify-content-end">
+			<div id="options" class="container mb-3 d-flex justify-content-end">
 				<a class="btn btn-primary" href="create.php">Create</a>
 			</div>
 			<div class="container">
@@ -79,7 +79,7 @@ class AdminPage
 			<div class="container">
 				<h1><?= $this->title ?></h1>
 			</div>
-			<div class="container mb-3 d-flex justify-content-end">
+			<div id="options" class="container mb-3 d-flex justify-content-end">
 				<a class="btn ms-3 btn-primary" href="edit.php?id=<?= $id ?>">Edit</a>
 				<a class="btn ms-3 btn-danger" href="delete.php?id=<?= $id ?>">Delete</a>
 			</div>

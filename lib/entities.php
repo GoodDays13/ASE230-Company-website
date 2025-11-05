@@ -23,3 +23,11 @@ class ProductRepository extends JSONFile
 		parent::__construct(__DIR__ . '/../data/products.json');
 	}
 }
+
+class ContactRepository extends CSVFile
+{
+	public function __construct()
+	{
+		parent::__construct(__DIR__ . '/../data/contacts.csv');
+	}
+}

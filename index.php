@@ -265,7 +265,7 @@ $team = new TeamRepository();
                     <p class="text-muted mb-5">Et harum quidem rerum facilis est expedita distinctio temporecum soluta nobis est eligendi optio cumque nihil impedit quo minus maxime.</p>
 
                     <div>
-                        <form method="post" name="myForm" onsubmit="return validateForm()">
+                        <form method="post" name="myForm" action="contacts/create.php">
                             <p id="error-msg"></p>
                             <div id="simple-msg"></div>
                             <div class="row">
@@ -294,7 +294,7 @@ $team = new TeamRepository();
                                         <textarea name="comments" id="comments" rows="4" class="form-control" placeholder="Enter message..."></textarea>
                                     </div>
 
-                                    <button type="submit" id="submit" name="send" class="btn btn-primary">Send Message</button>
+                                    <button type="submit" id="submit" class="btn btn-primary">Send Message</button>
                                 </div>
                                 <!-- end col -->
                             </div>

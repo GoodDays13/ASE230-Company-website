@@ -53,6 +53,7 @@ class CSVFile implements Database
 			$id = count(readCSVFile($this->fileName));
 		} else {
 			$file = fopen($this->fileName, "w");
+			fputcsv($file, array_keys($item));
 		}
 		if (!$file) {
 			throw new Exception("File not found: " . $this->fileName);
