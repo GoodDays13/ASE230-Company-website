@@ -15,3 +15,11 @@ class AwardRepository extends CSVFile
 		parent::__construct(__DIR__ . '/../data/awards.csv');
 	}
 }
+
+class ProductRepository extends JSONFile
+{
+	public function __construct()
+	{
+		parent::__construct(__DIR__ . '/../data/products.json');
+	}
+}

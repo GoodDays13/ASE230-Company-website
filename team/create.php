@@ -1,50 +1,8 @@
 <?php
-include_once '../lib/entities.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $database = new TeamRepository();
-    $database->create($_POST);
-    header('Location: index.php');
-    exit;
-}
-?>
+require_once '../lib/admin.php';
+require_once '../lib/entities.php';
 
-<!DOCTYPE html>
-<html>
+$database = new TeamRepository();
 
-<head>
-    <meta charset="utf-8" />
-    <title>Team member</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
-
-    <!-- css -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../css/style.min.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-    <div class="container">
-        <h1>Team member</h1>
-    </div>
-    <div class="container">
-        <form action="create.php" method="post">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group">
-                <label for="position">Position</label>
-                <input type="text" class="form-control" id="position" name="position">
-            </div>
-            <div class="form-group">
-                <label for="bio">Bio</label>
-                <textarea class="form-control" id="bio" name="bio"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-        </form>
-    </div>
-</body>
-
-</html>
+$admin = new AdminPage('Team', $database);
+$admin->create(['Name' => '', 'Description' => '', 'Bio' => '']);

@@ -33,7 +33,7 @@ interface Database
 	public function find(array $conditions): array;
 }
 
-include 'csv.php';
+require_once 'csv.php';
 class CSVFile implements Database
 {
 	private $fileName;
@@ -110,6 +110,83 @@ class CSVFile implements Database
 			}
 		}
 
+		return $result;
+	}
+}
+
+require_once 'json.php';
+class JSONFile implements Database
+{
+	private $fileName;
+	/**
+	 * @param mixed $fileName
+	 */
+	public function __construct($fileName)
+	{
+		$this->fileName = $fileName;
+	}
+	public function create($item): mixed
+	{
+		foreach ($item as $key => $value) {
+			if (is_string($value)) {
+				$item[$key] = json_decode($value) ?? $value;
+			}
+		}
+		$id = 0;
+		if (file_exists($this->fileName)) {
+			$file = fopen($this->fileName, "a");
+			$id = count(readJsonFile($this->fileName));
+		} else {
+			$file = fopen($this->fileName, "w");
+		}
+		if (!$file) {
+			throw new Exception("File not found: " . $this->fileName);
+		}
+		fputcsv($file, $item);
+		fclose($file);
+		return $id;
+	}
+	public function read($id): array | null
+	{
+		return readJsonFile($this->fileName)[$id];
+	}
+	public function readAll(): array
+	{
+		return readJsonFile($this->fileName);
+	}
+	public function update($id, $newItem): void
+	{
+		foreach ($newItem as $key => $value) {
+			if (is_string($value)) {
+				$newItem[$key] = json_decode($value) ?? $value;
+			}
+		}
+		$data = readJsonFile($this->fileName);
+		$data[$id] = $newItem;
+		writeJSONFile($this->fileName, $data);
+	}
+	public function delete($id): void
+	{
+		$data = readJsonFile($this->fileName);
+		unset($data[$id]);
+		writeJSONFile($this->fileName, $data);
+	}
+	public function find(array $conditions): array
+	{
+		$data = readJsonFile($this->fileName);
+		$result = [];
+		foreach ($data as $item) {
+			$match = true;
+			foreach ($conditions as $key => $value) {
+				if ($item[$key] !== $value) {
+					$match = false;
+					break;
+				}
+			}
+			if ($match) {
+				$result[] = $item;
+			}
+		}
 		return $result;
 	}
 }

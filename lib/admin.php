@@ -86,7 +86,7 @@ class AdminPage
 			<div class="container">
 				<div class="list-group">
 					<?php foreach ($member as $detail) : ?>
-						<li class="list-group-item"><?= $detail ?></li>
+						<li class="list-group-item"><?= is_array($detail) ? implode('|', $detail) : $detail ?></li>
 					<?php endforeach ?>
 				</div>
 			</div>
@@ -94,6 +94,16 @@ class AdminPage
 
 		</html>
 	<?php
+	}
+
+	public function create($template): void
+	{
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$this->database->create($_POST);
+			header('Location: index.php');
+			exit;
+		}
+		$this->editForm($template, 'create.php');
 	}
 
 	public function edit(): void
@@ -104,6 +114,11 @@ class AdminPage
 			header('Location: index.php');
 			exit;
 		}
+		$this->editForm($this->database->read($id), 'edit.php?id=' . $id);
+	}
+
+	public function editForm($item, $action): void
+	{
 	?>
 
 		<!DOCTYPE html>
@@ -127,14 +142,18 @@ class AdminPage
 				<h1><?= $this->title ?></h1>
 			</div>
 			<div class="container">
-				<form action="edit.php?id=<?= $id ?>" method="post">
-					<?php foreach ($this->database->read($id) as $key => $detail) : ?>
-						<div class="form-group">
+				<form action="<?= $action ?>" method="post">
+					<?php foreach ($item as $key => $detail) : ?>
+						<div class="form-floating mb-3">
+							<?php if (is_array($detail)) : ?>
+								<textarea class="form-control" placeholder="Hello, world" id="<?= $key ?>" name="<?= $key ?>" style="height: 10lh"><?= htmlspecialchars(json_encode($detail, JSON_PRETTY_PRINT)) ?></textarea>
+							<?php else : ?>
+								<input type="text" class="form-control" placeholder="test" id="<?= $key ?>" name="<?= $key ?>" value="<?= $detail ?>">
+							<?php endif ?>
 							<label for="<?= $key ?>"><?= $key ?></label>
-							<input type="text" class="form-control" id="<?= $key ?>" name="<?= $key ?>" value="<?= $detail ?>">
 						</div>
 					<?php endforeach ?>
-					<button type="submit" class="btn btn-primary mt-3">Submit</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
 		</body>

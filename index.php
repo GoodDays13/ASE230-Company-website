@@ -6,7 +6,7 @@ require_once("lib/entities.php");
 $company_name = readPlaintextFile("data/company_name.txt");
 $overview = readPlaintextFile("data/overview.txt");
 $mission_statement = readPlaintextFile("data/mission_statement.txt");
-$products = readJsonFile("data/products.json");
+$products = new ProductRepository();
 $awards = new AwardRepository();
 $team = new TeamRepository();
 ?>
@@ -131,7 +131,7 @@ $team = new TeamRepository();
             <!-- end row -->
             <?php
             $i = 0;
-            foreach ($products as $product) {
+            foreach ($products->readAll() as $product) {
                 $i++;
             ?>
                 <div class="row align-items-center justify-content-between <?= $i == 0 ? "mb-5" : "section pb-0" ?>">
