@@ -10,7 +10,7 @@ class AdminPage
 		$this->database = $database;
 	}
 
-	public function index($preview): void
+	public function index($preview = null): void
 	{
 		$items = $this->database->readAll();
 ?>
@@ -40,7 +40,7 @@ class AdminPage
 			<div class="container">
 				<div class="list-group">
 					<?php foreach ($items as $i => $item) : ?>
-						<a href="detail.php?id=<?= $i ?>" class="list-group-item list-group-item-action"><?= $item[$preview] ?></a>
+						<a href="detail.php?id=<?= $i ?>" class="list-group-item list-group-item-action"><?= is_null($preview) ? $i : $item[$preview] ?></a>
 					<?php endforeach ?>
 				</div>
 			</div>
@@ -162,7 +162,7 @@ class AdminPage
 	<?php
 	}
 
-	public function delete($preview): void
+	public function delete($preview = null): void
 	{
 		$id = $_GET['id'];
 		if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
@@ -195,7 +195,7 @@ class AdminPage
 					<div class="card w-50">
 						<div class="card-body">
 							<h5 class="card-title">Are you sure?</h5>
-							<p class="card-text">You are about to delete <?= $this->database->read($id)[$preview] ?>.</p>
+							<p class="card-text">You are about to delete <?= is_null($preview) ? $id : $this->database->read($id)[$preview] ?>.</p>
 							<button class="btn btn-danger" onclick="deleteItem()">Delete</button>
 							<a href="index.php" class="btn btn-primary">Cancel</a>
 						</div>

@@ -3,9 +3,10 @@ require_once("lib/plaintext.php");
 require_once("lib/json.php");
 require_once("lib/entities.php");
 
-$company_name = readPlaintextFile("data/company_name.txt");
-$overview = readPlaintextFile("data/overview.txt");
-$mission_statement = readPlaintextFile("data/mission_statement.txt");
+$variables = new VariableRepository();
+$company_name = $variables->read('company_name')['company_name'];
+$overview = $variables->read('overview')['overview'];
+$mission_statement = $variables->read('mission_statement')['mission_statement'];
 $products = new ProductRepository();
 $awards = new AwardRepository();
 $team = new TeamRepository();

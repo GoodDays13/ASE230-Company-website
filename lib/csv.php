@@ -25,7 +25,6 @@ function writeCSVFile($filePath, $data)
 {
 	$file = fopen($filePath, "w");
 
-	var_dump($file);
 	$keys = array_keys($data[0]);
 	fputcsv($file, $keys);
 	foreach ($data as $item) {
