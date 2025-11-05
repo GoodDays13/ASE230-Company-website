@@ -1,14 +1,14 @@
 <?php
 require_once("lib/plaintext.php");
-require_once("lib/csv.php");
 require_once("lib/json.php");
+require_once("lib/entities.php");
 
 $company_name = readPlaintextFile("data/company_name.txt");
 $overview = readPlaintextFile("data/overview.txt");
 $mission_statement = readPlaintextFile("data/mission_statement.txt");
 $products = readJsonFile("data/products.json");
-$awards = readCSVFile("data/awards.csv");
-$team = readCSVFile("data/team.csv");
+$awards = new AwardRepository();
+$team = new TeamRepository();
 ?>
 
 <!DOCTYPE html>
@@ -171,7 +171,7 @@ $team = readCSVFile("data/team.csv");
             <div class="row">
                 <?php
                 $i = 0;
-                foreach ($awards as $award) {
+                foreach ($awards->readAll() as $award) {
                     $i++;
                     if ($i % 2 == 1) {
                 ?>
@@ -181,8 +181,8 @@ $team = readCSVFile("data/team.csv");
                                     <div class="icon-mono service-icon avatar-md mx-auto mb-4">
                                         <i class="" data-feather="box"></i>
                                     </div>
-                                    <h4 class="mb-3 font-size-22"><?= $award[0] ?></h4>
-                                    <p class="text-muted mb-0"><?= $award[1] ?></p>
+                                    <h4 class="mb-3 font-size-22"><?= $award['Year'] ?></h4>
+                                    <p class="text-muted mb-0"><?= $award['Description'] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -196,8 +196,8 @@ $team = readCSVFile("data/team.csv");
                                     <div class="icon-mono service-icon avatar-md mx-auto mb-4">
                                         <i class="" data-feather="layers"></i>
                                     </div>
-                                    <h4 class="mb-3 font-size-22"><?= $award[0] ?></h4>
-                                    <p class="text-muted mb-0"><?= $award[1] ?></p>
+                                    <h4 class="mb-3 font-size-22"><?= $award['Year'] ?></h4>
+                                    <p class="text-muted mb-0"><?= $award['Description'] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +224,7 @@ $team = readCSVFile("data/team.csv");
             <!-- end row -->
             <div class="row">
                 <?php $i = 0;
-                foreach ($team as $team_member): ?>
+                foreach ($team->readAll() as $team_member): ?>
                     <div class="col-lg-3 col-sm-6">
                         <div class="team-box mt-4 position-relative overflow-hidden rounded text-center shadow">
                             <div class="position-relative overflow-hidden">
@@ -242,8 +242,8 @@ $team = readCSVFile("data/team.csv");
                                 </ul>
                             </div>
                             <div class="p-4">
-                                <h5 class="font-size-19 mb-1"><?= $team_member[0] ?></h5>
-                                <p class="text-muted text-uppercase font-size-14 mb-0"><?= $team_member[1] ?></p>
+                                <h5 class="font-size-19 mb-1"><?= $team_member['Name'] ?></h5>
+                                <p class="text-muted text-uppercase font-size-14 mb-0"><?= $team_member['Title'] ?></p>
                             </div>
                         </div>
                     </div>

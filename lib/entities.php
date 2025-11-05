@@ -1,0 +1,17 @@
+<?php
+require_once 'database.php';
+class TeamRepository extends CSVFile
+{
+	public function __construct()
+	{
+		parent::__construct(__DIR__ . '/../data/team.csv');
+	}
+}
+
+class AwardRepository extends CSVFile
+{
+	public function __construct()
+	{
+		parent::__construct(__DIR__ . '/../data/awards.csv');
+	}
+}
